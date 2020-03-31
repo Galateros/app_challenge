@@ -7,6 +7,7 @@ import java.net.URL
 import java.util.concurrent.Executors
 
 class AirrQualityActivity : AppCompatActivity() {
+
     var response = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

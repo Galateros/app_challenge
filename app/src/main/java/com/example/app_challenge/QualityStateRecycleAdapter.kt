@@ -18,14 +18,14 @@ import java.util.concurrent.Executors
 
 //import kotlinx.android.synthetic.main.mcu_dude_layout.view.*
 //QualityRecycleAdapter
-class QualityRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class QualityStateRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private var countries:JSONArray= JSONArray()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        return AirQualityViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.activity_quality_recycle_adapter, parent, false)
+        return AirStateQualityViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.activity_quality_state_recycle_adapter, parent, false)
         )
     }
 
@@ -37,12 +37,11 @@ class QualityRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when(holder){
-            is AirQualityViewHolder -> {
+            is AirStateQualityViewHolder -> {
                 holder.bind(countries.getJSONObject(position))
                 holder.itemView.setOnClickListener{
                     val contexto = it.context
-                    val intent = Intent(contexto, RegionView::class.java)
-                    //intent.putExtra("country",countries.getJSONObject(position).getString("country"))
+                    val intent = Intent(contexto, FinalView::class.java)
                     contexto.startActivity(intent)
                     Toast.makeText(contexto, "INSIDE DUDE", Toast.LENGTH_LONG).show()
                 }
@@ -55,17 +54,17 @@ class QualityRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
         //println("Countries 1:"+countries)
     }
 }
-
-class AirQualityViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
+class AirStateQualityViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     val imageDude = itemView.imageView
     val name = itemView.name_alias
     val notes = itemView.notes
 
-    fun bind(country: JSONObject){
+    fun bind(country: JSONObject) {
 
-        name.text =  country.getString("country")
+        name.text = country.getString("city")
         notes.text = "WARK"
 
     }
+
 }

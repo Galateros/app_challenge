@@ -21,6 +21,7 @@ import java.util.concurrent.Executors
 class QualityRegionRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     private var countries:JSONArray= JSONArray()
+    private var toSendCountry:String? = ""
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -42,12 +43,19 @@ class QualityRegionRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder
                 holder.itemView.setOnClickListener{
                     val contexto = it.context
                     val intent = Intent(contexto, StateView::class.java)
+                    intent.putExtra("country",toSendCountry)
+                    intent.putExtra("state",countries.getJSONObject(position).getString("state"))
                     contexto.startActivity(intent)
                     Toast.makeText(contexto, "INSIDE DUDE", Toast.LENGTH_LONG).show()
                 }
             }
         }
     }
+
+    fun setCountry(x: String?){
+        toSendCountry = x
+    }
+
     fun setData(c: JSONArray){
         countries = c
         notifyDataSetChanged()

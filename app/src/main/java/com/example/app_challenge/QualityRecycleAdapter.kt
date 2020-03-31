@@ -42,7 +42,7 @@ class QualityRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
                 holder.itemView.setOnClickListener{
                     val contexto = it.context
                     val intent = Intent(contexto, RegionView::class.java)
-                    //intent.putExtra("country",countries.getJSONObject(position).getString("country"))
+                    intent.putExtra("country",countries.getJSONObject(position).getString("country"))
                     contexto.startActivity(intent)
                     Toast.makeText(contexto, "INSIDE DUDE", Toast.LENGTH_LONG).show()
                 }

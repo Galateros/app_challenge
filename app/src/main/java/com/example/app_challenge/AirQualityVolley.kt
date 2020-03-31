@@ -32,3 +32,69 @@ class AirQualityVolley (val url:String, val contexto: Context, val qrAdapter:Qua
         queue.add(request)
     }
 }
+class AirRegionQualityVolley (val url:String, val contexto: Context, val qrAdapter:QualityRegionRecycleAdapter ) {
+
+    val queue = Volley.newRequestQueue(contexto)
+    fun callQualityAPI(){
+        val data = JSONArray()
+        val request = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            Response.Listener<JSONObject> { response ->
+                val data = response.getJSONArray("data")
+
+
+
+                qrAdapter.setData(data)
+            },
+            Response.ErrorListener {
+                Log.e("Volley Error", it.toString())
+                Toast.makeText(contexto, "That didn't work!" + it.toString(), Toast.LENGTH_SHORT).show()
+            })
+
+        queue.add(request)
+    }
+}
+class AirStateQualityVolley (val url:String, val contexto: Context, val qrAdapter:QualityStateRecycleAdapter ) {
+
+    val queue = Volley.newRequestQueue(contexto)
+    fun callQualityAPI(){
+        val data = JSONArray()
+        val request = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            Response.Listener<JSONObject> { response ->
+                val data = response.getJSONArray("data")
+
+
+
+                qrAdapter.setData(data)
+            },
+            Response.ErrorListener {
+                Log.e("Volley Error", it.toString())
+                Toast.makeText(contexto, "That didn't work!" + it.toString(), Toast.LENGTH_SHORT).show()
+            })
+
+        queue.add(request)
+    }
+}
+class AirFinalQualityVolley (val url:String, val contexto: Context, var qrAdapter:JSONArray ) {
+
+    val queue = Volley.newRequestQueue(contexto)
+    fun callQualityAPI():JSONArray{
+        val data = JSONArray()
+        val request = JsonObjectRequest(
+            Request.Method.GET, url, null,
+            Response.Listener<JSONObject> { response ->
+                val data = response.getJSONArray("forecasts")
+
+
+
+               qrAdapter = data
+            },
+            Response.ErrorListener {
+                Log.e("Volley Error", it.toString())
+                Toast.makeText(contexto, "That didn't work!" + it.toString(), Toast.LENGTH_SHORT).show()
+            })
+        return qrAdapter
+        queue.add(request)
+    }
+}

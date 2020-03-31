@@ -9,7 +9,7 @@ import org.json.JSONObject
 class RegionView : AppCompatActivity() {
     private lateinit var qualityAdapter:QualityRegionRecycleAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
-        //val dude = intent.getSerializableExtra("country") as? String
+        val country = intent.getSerializableExtra("country") as? String
         var json ="{\n" +
                 "  \"status\": \"success\",\n" +
                 "  \"data\": [\n" +
@@ -55,10 +55,14 @@ class RegionView : AppCompatActivity() {
         var toArray = JSONObject(json)
         var toSend = toArray.getJSONArray("data")
 
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_region_view)
         setRecyclerView()
-        qualityAdapter.setData(toSend)
+        println(country)
+        qualityAdapter.setCountry(country)
+        AirRegionQualityVolley("https://api.airvisual.com/v2/states?country=$country&key=b1e64074-3f61-41c6-ab37-c02b11919b7a",this,qualityAdapter).callQualityAPI()
+        //qualityAdapter.setData(toSend)
     }
     private fun setRecyclerView(){
         recycler_view_muc.apply {

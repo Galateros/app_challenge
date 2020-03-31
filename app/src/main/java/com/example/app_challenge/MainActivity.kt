@@ -87,7 +87,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         setRecyclerView()
-        qualityAdapter.setData(toSend)
+        AirQualityVolley("https://api.airvisual.com/v2/countries?key=b1e64074-3f61-41c6-ab37-c02b11919b7a",this,qualityAdapter).callQualityAPI()
+        //qualityAdapter.setData(toSend)
 
 
 

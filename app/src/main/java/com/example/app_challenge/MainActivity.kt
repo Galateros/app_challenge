@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
                 "      \"country\": \"Argentina\"\n" +
                 "    },\n" +
                 "    {\n" +
-                "      \"country\": \"Australia\"\n" +
+        "      \"country\": \"Australia\"\n" +
                 "    },\n" +
                 "    {\n" +
                 "      \"country\": \"Austria\"\n" +
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             // val image = personaje.getJSONObject("thumbnail")
 
 
-        println(toSend)
+        toSend = getData()
 
 
         super.onCreate(savedInstanceState)
@@ -111,12 +111,12 @@ class MainActivity : AppCompatActivity() {
     private fun getData() : JSONArray{
         var toResponse:JSONArray = JSONArray()
         Executors.newSingleThreadExecutor().execute({
-            val json = URL("https://api.airvisual.com/v2/countries?key={KEY}").readText()
+            val json = URL("https://api.airvisual.com/v2/countries?key=b1e64074-3f61-41c6-ab37-c02b11919b7a").readText()
             //println(json)
             var obj = JSONObject(json)
             var array = obj.getJSONArray("data")
             toResponse = array
-
+            println(array);
             // val image = personaje.getJSONObject("thumbnail")
 
         })

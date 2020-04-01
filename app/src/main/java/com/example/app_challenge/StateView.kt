@@ -13,41 +13,7 @@ class StateView : AppCompatActivity() {
         val state = intent.getSerializableExtra("state") as? String
         //val city = intent.getSerializableExtra("city") as? String
         //val dude = intent.getSerializableExtra("country") as? String
-        var json ="{\n" +
-                "  \"status\": \"success\",\n" +
-                "  \"data\": [\n" +
-                "    {\n" +
-                "      \"city\": \"Addison\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"Albany\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"Buffalo\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"Carmel\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"Dunkirk\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"East Syracuse\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"Farmingdale\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"Holtsville\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"Ithaca\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"city\": \"La Fargeville\"\n" +
-                "    }]}"
-        var toArray = JSONObject(json)
-        var toSend = toArray.getJSONArray("data")
+
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_state_view)

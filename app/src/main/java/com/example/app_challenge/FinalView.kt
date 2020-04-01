@@ -17,7 +17,7 @@ class FinalView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_final_view)
         setData(country,state,city)
-        calidad.text = "holi"
+
         AirFinalQualityVolley("https://api.airvisual.com/v2/city?city=$city&state=$state&country=$country&key=b1e64074-3f61-41c6-ab37-c02b11919b7a",this,calidad,resultado).callQualityAPI()
         //AirFinalQualityVolley("https://api.airvisual.com/v2/city?city=$city&state=$state&country=$country&key=b1e64074-3f61-41c6-ab37-c02b11919b7a",this, this).callQualityAPI()
     }

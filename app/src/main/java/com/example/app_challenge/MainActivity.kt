@@ -39,65 +39,13 @@ class MainActivity : AppCompatActivity() {
     //val apiUrl = URL("https://api.airvisual.com/v2/nearest_city?key=b1e64074-3f61-41c6-ab37-c02b11919b7a").readText()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        var json = "{\n" +
-                "  \"status\": \"success\",\n" +
-                "  \"data\": [\n" +
-                "    {\n" +
-                "      \"country\": \"Andorra\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"country\": \"Argentina\"\n" +
-                "    },\n" +
-                "    {\n" +
-        "      \"country\": \"Australia\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"country\": \"Austria\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"country\": \"Bahamas\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"country\": \"Bahrain\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"country\": \"Bangladesh\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"country\": \"Belgium\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"country\": \"Bosnia Herzegovina\"\n" +
-                "    },\n" +
-                "    {\n" +
-                "      \"country\": \"Brazil\"\n" +
-                "    }]}"
-        var toArray = JSONObject(json)
-        var toSend = toArray.getJSONArray("data")
-
-
-            //val json = JSONObject(URL("https://api.airvisual.com/v2/countries?key={{key}}").readText()).getJSONArray("data")
-            //println(json)
-            // val image = personaje.getJSONObject("thumbnail")
-
-
-        toSend = getData()
-
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         setRecyclerView()
         AirQualityVolley("https://api.airvisual.com/v2/countries?key=b1e64074-3f61-41c6-ab37-c02b11919b7a",this,qualityAdapter).callQualityAPI()
-        //qualityAdapter.setData(toSend)
 
-
-
-
-        //println(apiUrl)
-
-
-        //val apiResponse = URL("yourUrl").readText()
         val button = findViewById<Button>(R.id.button)
         button?.setOnClickListener()
         {
@@ -109,20 +57,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun getData() : JSONArray{
-        var toResponse:JSONArray = JSONArray()
-        Executors.newSingleThreadExecutor().execute({
-            val json = URL("https://api.airvisual.com/v2/countries?key=b1e64074-3f61-41c6-ab37-c02b11919b7a").readText()
-            //println(json)
-            var obj = JSONObject(json)
-            var array = obj.getJSONArray("data")
-            toResponse = array
-            println(array);
-            // val image = personaje.getJSONObject("thumbnail")
 
-        })
-        return toResponse
-    }
     private fun setRecyclerView(){
         recycler_view_muc.apply {
             layoutManager = LinearLayoutManager(this@MainActivity)

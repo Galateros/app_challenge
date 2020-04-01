@@ -48,7 +48,7 @@ class QualityStateRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
                     intent.putExtra("state",toSendState)
                     intent.putExtra("city",countries.getJSONObject(position).getString("city"))
                     contexto.startActivity(intent)
-                    Toast.makeText(contexto, "INSIDE DUDE", Toast.LENGTH_LONG).show()
+
                 }
             }
         }
@@ -68,14 +68,14 @@ class QualityStateRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
 }
 class AirStateQualityViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-    val imageDude = itemView.imageView
+
     val name = itemView.name_alias
-    val notes = itemView.notes
+
 
     fun bind(country: JSONObject) {
 
         name.text = country.getString("city")
-        notes.text = "WARK"
+
 
     }
 

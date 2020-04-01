@@ -63,6 +63,7 @@ class QualityStateRecycleAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
         countries = c
         notifyDataSetChanged()
         //println("Countries 1:"+countries)
+
     }
 }
 class AirStateQualityViewHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {

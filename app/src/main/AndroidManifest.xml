@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FinalView"></activity>
+        <activity android:name=".CurrentLocationView"></activity>
+        <activity android:name=".FinalView" />
         <activity android:name=".StateView" />
         <activity android:name=".QualityStateRecycleAdapter" />
         <activity android:name=".QualityRegionRecycleAdapter" />

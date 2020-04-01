@@ -1,6 +1,7 @@
 package com.example.app_challenge
 
 
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -100,10 +101,9 @@ class MainActivity : AppCompatActivity() {
         val button = findViewById<Button>(R.id.button)
         button?.setOnClickListener()
         {
-            Toast.makeText(this@MainActivity,
-                "WARK", Toast.LENGTH_LONG).show() }
-
-
+            val intent = Intent(this, CurrentLocationView::class.java)
+            this.startActivity(intent)
+        }
     Toast.makeText(this, "Climate Change", Toast.LENGTH_LONG).show()
         Log.i("climatechange","CC Loading")
 
